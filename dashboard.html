@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Dashboard - Maincrafts</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Maincrafts</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="submissions.html">Submissions</a></li>
+            <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        </ul>
+    </nav>
+
+    <main class="contact-section">
+        <div class="form-container" style="max-width: 700px; width: 100%;">
+            <h2>Task Manager Dashboard</h2>
+            <p>Create, read, update, and delete your tasks offline.</p>
+            
+            <form id="taskForm" action="#" onsubmit="saveTask(event)">
+                <input type="hidden" id="editTaskId" value="">
+                <div class="form-group" style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <input type="text" id="taskInput" placeholder="Enter a new task..." required style="flex: 1; margin-bottom: 0;">
+                    <button type="submit" id="taskSubmitBtn" class="submit-btn" style="width: auto; padding: 0 25px;">Add Task</button>
+                </div>
+            </form>
+
+            <div class="filter-container" style="display: flex; gap: 10px; margin-bottom: 25px;">
+                <input type="text" id="searchBox" placeholder="Search tasks..." onkeyup="filterTasks()" style="width: 100%; padding: 16px 20px; background: #0b0f19; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; color: white; outline: none;">
+                
+                <select id="statusFilter" onchange="filterTasks()" style="padding: 0 20px; background: #0b0f19; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; color: white; outline: none; cursor: pointer;">
+                    <option value="all">All Tasks</option>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+
+            <div id="taskListContainer" style="display: flex; flex-direction: column; gap: 15px;">
+                </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Maincrafts Technology. Designed & Developed by Himendra Singh.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
