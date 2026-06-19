@@ -1,6 +1,3 @@
-// ==========================================================================
-// 1. FORM SUBMIT LOGIC (Task 3 - Contact & Submissions)
-// ==========================================================================
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(event) {
@@ -41,9 +38,6 @@ function displaySubmissions() {
     }
 }
 
-// ==========================================================================
-// 2. TASK MANAGER DASHBOARD LOGIC (Task 4 - CRUD Engine)
-// ==========================================================================
 let tasks = JSON.parse(localStorage.getItem('dashboardTasks')) || [];
 
 // Dashboard initial load listener
@@ -52,8 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
         displayTasks(tasks);
     }
 });
-
-// Create and Update Function
 function saveTask(event) {
     event.preventDefault();
     
@@ -64,7 +56,7 @@ function saveTask(event) {
     if (taskInput.value.trim() === "") return;
 
     if (editTaskId) {
-        // Edit Mode (Update)
+       
         tasks = tasks.map(task => {
             if (task.id == editTaskId) {
                 return { ...task, name: taskInput.value.trim() };
@@ -74,7 +66,7 @@ function saveTask(event) {
         document.getElementById('editTaskId').value = "";
         submitBtn.innerText = "Add Task";
     } else {
-        // Add Mode (Create)
+       
         const newTask = {
             id: Date.now(),
             name: taskInput.value.trim(),
@@ -87,7 +79,6 @@ function saveTask(event) {
     taskInput.value = "";
 }
 
-// Read Interface
 function displayTasks(tasksToRender) {
     const listContainer = document.getElementById('taskListContainer');
     if (!listContainer) return;
@@ -113,7 +104,6 @@ function displayTasks(tasksToRender) {
     `).join('');
 }
 
-// Toggle Complete
 function toggleComplete(id) {
     tasks = tasks.map(task => {
         if (task.id === id) {
@@ -124,7 +114,6 @@ function toggleComplete(id) {
     syncWithStorage();
 }
 
-// Populate UI for Edit
 function editTask(id) {
     const taskToEdit = tasks.find(task => task.id === id);
     if (!taskToEdit) return;
@@ -135,13 +124,11 @@ function editTask(id) {
     document.getElementById('taskInput').focus();
 }
 
-// Delete Logic
 function deleteTask(id) {
     tasks = tasks.filter(task => task.id !== id);
     syncWithStorage();
 }
 
-// Search and Filter Logic
 function filterTasks() {
     const query = document.getElementById('searchBox').value.toLowerCase();
     const filterValue = document.getElementById('statusFilter').value;
@@ -158,7 +145,6 @@ function filterTasks() {
     displayTasks(filtered);
 }
 
-// Data synchronization helper
 function syncWithStorage() {
     localStorage.setItem('dashboardTasks', JSON.stringify(tasks));
     filterTasks();
